@@ -1,0 +1,15 @@
+let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
+:def! search return . (":! hoogle --color " ++) . ghciEscapeShellArg
+:def! doc return . (":! hoogle --color  " ++) . ghciEscapeShellArg
+
+
+:seti -XNoImplicitPrelude
+:seti -XOverloadedStrings
+:seti -XScopedTypeVariables
+
+:set -Wall
+:set -fno-warn-type-defaults
+
+:set -DGHCI
+:set +s
+:set +t
