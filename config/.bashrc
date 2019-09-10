@@ -2,6 +2,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export MYVIMRC="/home/yannick/.config/nvim/init.vim"
 export PATH=/home/yannick/scripts:/home/yannick/.local/bin:$PATH
+export FZF_DEFAULT_COMMAND='find *'
 
 alias v="nvim"
 alias vim="nvim"
@@ -24,6 +25,12 @@ alias ei3="sn ~/.config/i3/config"
 # System command shortcuts
 alias sus="systemctl suspend"
 alias hib="systemctl hibernate"
+
+# Directory shortcuts
+alias h="cd ~"
+alias df="cd ~/.dotfiles"
+alias p="cd ~/Projects"
+alias fp="cd ~/Projects/fp-complete"
 
 # Script execution
 alias gp="gitpush.sh"

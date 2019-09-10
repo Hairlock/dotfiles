@@ -48,8 +48,8 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioStop exec mpc stop
 
 # kill focused window
-bindsym $super+c kill
-bindsym $alt+F4 kill
+bindsym $super+x kill
+bindsym $alt+c kill
 
 # change focus
 bindsym $super+h focus left

@@ -135,7 +135,8 @@
 
     # Utilities
     light # Brightness setting
-    vifm # File manager
+    fff # File manager
+    sxiv # Image Viewer
     maim # Screenshot tool
     libnotify
 
