@@ -95,6 +95,7 @@ map <F8> :call GoBuf()<CR>
 let mapleader = ','
 let maplocalleader = ','
 
+map <leader>q :q!<CR>
 map <leader>w :w!<CR>
 map <leader>e :wq!<CR>
 map <leader>s :source /home/yannick/.config/nvim/init.vim<CR>

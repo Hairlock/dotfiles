@@ -4,9 +4,6 @@
 
 { config, pkgs, ... }:
 
-# let
-#   all-hies = import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master") {};
-# in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -82,10 +79,10 @@
     }));
   };
 
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-  };
+  # services.plex = {
+  #   enable = true;
+  #   openFirewall = true;
+  # };
 
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video %S%p/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w %S%p/brightness"
@@ -126,10 +123,9 @@
     gnumake
     gcc
     zlib
-    (st.overrideAttrs (oldAttrs: {
+    (st.overrideAttrs (oldAttrs: { # Terminal with overrides
       src = ./overrides/st;
     }))
-    # (all-hies.selection { selector = p: { inherit (p) ghc864 ghc863 ghc843; }; })
 
     nix
     haskellPackages.ghcid
@@ -157,7 +153,6 @@
     compton
     dunst
     hsetroot #wallpapers
-    # rxvt_unicode   #terminal
     xsel
     rofi
     noto-fonts

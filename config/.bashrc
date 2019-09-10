@@ -21,6 +21,7 @@ alias eg="sn ~/scripts/.ghci"
 alias ei3="sn ~/.config/i3/config"
 alias sus="systemctl suspend"
 alias hib="systemctl hibernate"
+alias pd="pushdots.sh"
 
 # Haskell
 alias gh="ghcid --test \":main\""
