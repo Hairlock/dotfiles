@@ -4,13 +4,11 @@ export MYVIMRC="/home/yannick/.config/nvim/init.vim"
 export PATH=/home/yannick/scripts:/home/yannick/.local/bin:$PATH
 export FZF_DEFAULT_COMMAND='find *'
 
+# Program shortcuts
 alias v="nvim"
 alias vim="nvim"
-alias su="sudo -E"
 alias fm="fff"
-alias wifi="nmtui"
-alias monitor="xrandr --output HDMI-2 --auto --right-of eDP-1"
-alias single-monitor="xrandr -s 0"
+alias img="sxiv -t ."
 
 # Edit config files
 alias ss="maim -s | xclip -selection clipboard -t image/png"
@@ -23,8 +21,12 @@ alias eg="sn ~/scripts/.ghci"
 alias ei3="sn ~/.config/i3/config"
 
 # System command shortcuts
+alias su="sudo -E"
 alias sus="systemctl suspend"
 alias hib="systemctl hibernate"
+alias wifi="nmtui"
+alias monitor="xrandr --output HDMI-2 --auto --right-of eDP-1"
+alias single-monitor="xrandr -s 0"
 
 # Directory shortcuts
 alias h="cd ~"
