@@ -1,5 +1,7 @@
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export TERMINAL=st
+export BROWSER=chromium
 export MYVIMRC="/home/yannick/.config/nvim/init.vim"
 export PATH=/home/yannick/scripts:/home/yannick/.local/bin:$PATH
 export FZF_DEFAULT_COMMAND='find *'
@@ -27,6 +29,8 @@ alias hib="systemctl hibernate"
 alias wifi="nmtui"
 alias monitor="xrandr --output HDMI-2 --auto --right-of eDP-1"
 alias single-monitor="xrandr -s 0"
+alias ndg="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +1"
+alias nrb="sudo nixos-rebuild switch"
 
 # Directory shortcuts
 alias h="cd ~"
@@ -41,20 +45,6 @@ alias gp="gitpush.sh"
 alias gh="ghcid --test \":main\""
 alias ghci="ghci -ghci-script ~/scripts/.ghci"
 
+# Misc
 alias sb="source ~/.profile && source ~/.bashrc"
-
-alias ndg="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +1"
-alias nrb="sudo nixos-rebuild switch"
-
-# Bash shell driver for 'go' (http://code.google.com/p/go-tool/).
-function go {
-    export GO_SHELL_SCRIPT=$HOME/.__tmp_go.sh
-    python -m go $*
-    if [ -f $GO_SHELL_SCRIPT ] ; then
-        source $GO_SHELL_SCRIPT
-    fi
-    unset GO_SHELL_SCRIPT
-}
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
+alias gs="git status"

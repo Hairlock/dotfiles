@@ -68,7 +68,7 @@ let maplocalleader = ','
 " Autocmds
 function! Hashbang(portable, permission, RemExt)
 let shells = {
-        \     'sh': "bash",
+        \     'sh': "env sh",
         \    }
 
 let extension = expand("%:e")
@@ -104,6 +104,11 @@ nnoremap <c-down>  :resize -2<CR>
 nnoremap <c-left>  :vertical resize -2<CR>
 nnoremap <c-right> :vertical resize +2<CR>
 nnoremap <c-up>    :resize +2<CR>
+
+" Delete without copy
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
 
 " Buffer navigation shortcuts
 nnoremap <Tab> :bn<CR>

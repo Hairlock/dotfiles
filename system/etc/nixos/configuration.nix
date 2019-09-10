@@ -137,6 +137,7 @@
     light # Brightness setting
     fff # File manager
     sxiv # Image Viewer
+    sxhkd # X Daemon for shortcuts
     maim # Screenshot tool
     libnotify
 
@@ -146,6 +147,8 @@
     # Useful
     skypeforlinux
     qbittorrent
+    bc # Calculator
+    pstree
 
     # I3
     dunst

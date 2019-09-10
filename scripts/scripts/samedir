@@ -1,0 +1,8 @@
+#!/run/current-system/sw/bin/env sh
+# Uses the whereami file which is updated from the cmd in .profile
+# cd to the directory in latest active terminal and open a new terminal
+
+WHEREAMI=$(cat /tmp/whereami)
+cd $WHEREAMI
+i3-sensible-terminal 
+

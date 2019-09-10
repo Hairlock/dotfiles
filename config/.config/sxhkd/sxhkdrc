@@ -1,0 +1,30 @@
+alt + Return
+      samedir
+
+alt + Escape
+      pkill -USR1 -x sxhkd
+
+alt + shift + w
+      $BROWSER
+
+Print
+      maim screenshot-$(date '+%d%m%y-%H:%M').png
+
+alt + Print
+      record
+
+
+alt + F1
+      $TERMINAL -e htop
+
+alt + F2
+      displayselect
+
+alt + F3
+      nmtui
+
+alt + F4
+      icons
+
+alt + F10
+      showclip

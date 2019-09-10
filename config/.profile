@@ -5,3 +5,4 @@ export FFF_HIDDEN=0
 
 export FFF_FAV1=~/Projects
 export FFF_FAV2=~/.dotfiles
+export PROMPT_COMMAND="pwd > /tmp/whereami"
