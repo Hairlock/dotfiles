@@ -61,11 +61,43 @@ set mouse=a
 
 set diffopt=filler,vertical
 
-" Haskell Language Server
-" set rtp+=~/.config/nvim/plugged/LanguageClient-neovim
-" let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
+" Set Leader keys
+let mapleader = ','
+let maplocalleader = ','
 
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" Autocmds
+function! Hashbang(portable, permission, RemExt)
+let shells = {
+        \     'sh': "bash",
+        \    }
+
+let extension = expand("%:e")
+
+if has_key(shells,extension)
+	let fileshell = shells[extension]
+
+	if a:portable
+		let line =  "#!/run/current-system/sw/bin/" . fileshell
+	else
+		let line = "#! " . system("which " . fileshell)
+	endif
+
+	0put = line
+
+	if a:permission
+		:autocmd BufWritePost * :autocmd VimLeave * :!chmod u+x %
+	endif
+
+
+	if a:RemExt
+		:autocmd BufWritePost * :autocmd VimLeave * :!mv % "%:p:r"
+	endif
+
+endif
+
+endfunction
+
+:autocmd BufNewFile *.sh :call Hashbang(1,1,0)
 
 " Ctrl+arrow to resize pane
 nnoremap <c-down>  :resize -2<CR>
@@ -73,6 +105,7 @@ nnoremap <c-left>  :vertical resize -2<CR>
 nnoremap <c-right> :vertical resize +2<CR>
 nnoremap <c-up>    :resize +2<CR>
 
+" Buffer navigation shortcuts
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 nnoremap <c-w> :bd<CR>
@@ -92,8 +125,6 @@ function! GoBuf()
 endfunction
 map <F8> :call GoBuf()<CR>
 
-let mapleader = ','
-let maplocalleader = ','
 
 map <leader>q :q!<CR>
 map <leader>w :w!<CR>
@@ -269,11 +300,6 @@ let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_set_highlights = 0
-
-" \   'haskell': ['stylish-haskell'],
-nnoremap <silent> gd :ALEGoToDefinition<cr>
-nnoremap <silent> K  :ALEHover<cr>
-" nnoremap <silent> ?  :ALEDetail<cr>
 
 " NerdTree Config
 map  <c-n>     :NERDTreeToggle<cr>
