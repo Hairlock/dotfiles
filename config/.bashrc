@@ -19,9 +19,13 @@ alias eb="sn ~/.bashrc"
 alias ev="sn ~/.config/nvim/init.vim"
 alias eg="sn ~/scripts/.ghci"
 alias ei3="sn ~/.config/i3/config"
+
+# System command shortcuts
 alias sus="systemctl suspend"
 alias hib="systemctl hibernate"
-alias pd="pushdots.sh"
+
+# Script execution
+alias gp="gitpush.sh"
 
 # Haskell
 alias gh="ghcid --test \":main\""
