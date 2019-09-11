@@ -6,6 +6,13 @@ export MYVIMRC="/home/yannick/.config/nvim/init.vim"
 export PATH=/home/yannick/scripts:/home/yannick/.local/bin:$PATH
 export FZF_DEFAULT_COMMAND='find *'
 
+# FFF variable config
+export FFF_HIDDEN=0
+
+export FFF_FAV1=~/Projects
+export FFF_FAV2=~/.dotfiles
+export PROMPT_COMMAND="pwd > /tmp/whereami"
+
 # Program shortcuts
 alias v="nvim"
 alias vim="nvim"
@@ -20,7 +27,9 @@ alias eb="sn ~/.bashrc"
 alias ep="sn ~/.profile"
 alias ev="sn ~/.config/nvim/init.vim"
 alias eg="sn ~/scripts/.ghci"
+alias ex="sn ~/.config/sxhkd/sxhkdrc"
 alias ei3="sn ~/.config/i3/config"
+alias xk="xkeywatch"
 
 # System command shortcuts
 alias su="sudo -E"
@@ -46,5 +55,5 @@ alias gh="ghcid --test \":main\""
 alias ghci="ghci -ghci-script ~/scripts/.ghci"
 
 # Misc
-alias sb="source ~/.profile && source ~/.bashrc"
+alias sb="source ~/.bashrc"
 alias gs="git status"

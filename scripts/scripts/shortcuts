@@ -1,0 +1,4 @@
+#!/run/current-system/sw/bin/env sh
+shortcuts=$(cat ~/.dotfiles/config/.config/sxhkd/sxhkdrc)
+
+[ -n "$shortcuts" ] && notify-send "Shortcuts:" "$shortcuts"

@@ -55,6 +55,12 @@
 
   hardware.brightnessctl.enable = true;
 
+  services.cron = {
+    enable = true;
+    # systemCronJobs = [
+    #   "@reboot /home/yannick/scripts/xkeywatch >/dev/null 2>&1"
+    # ];
+  };
 
 
   # Configure network proxy if necessary
@@ -78,6 +84,18 @@
       src = ./overrides/st;
     }));
   };
+
+  # SystemD services
+  # systemd.services.xkeywatch = {
+  #   enable = true;
+  #   serviceConfig.Type = "oneshot";
+  #   environment = {
+  #     HOME = "/home/yannick";
+  #   };
+  #   script = ''
+  #     sxhkd &
+  #   '';
+  # };
 
   # services.plex = {
   #   enable = true;

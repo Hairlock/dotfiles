@@ -13,17 +13,19 @@ Print
 alt + Print
       record
 
-
 alt + F1
-      $TERMINAL -e htop
+      shortcuts
 
 alt + F2
-      displayselect
+      $TERMINAL -e htop
 
 alt + F3
-      nmtui
+      displayselect
 
 alt + F4
+      nmtui
+
+alt + F5
       icons
 
 alt + F10

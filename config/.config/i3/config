@@ -9,6 +9,7 @@ font pango: Noto Sans 12
 floating_modifier $super
 
 #autostart
+# bindsym $super+Return exec --no-startup-id ~/scripts/xkeywatch.sh
 exec --no-startup-id hsetroot -center ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
