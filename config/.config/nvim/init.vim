@@ -135,10 +135,10 @@ map <leader>q :q!<CR>
 map <leader>w :w!<CR>
 map <leader>e :wq!<CR>
 map <leader>s :source /home/yannick/.config/nvim/init.vim<CR>
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
+nnoremap th <C-w>h
+nnoremap tj <C-w>j
+nnoremap tk <C-w>k
+nnoremap tl <C-w>l
 inoremap jk <Esc>
 inoremap jj <CR><C-R>=repeat(' ',col([line('.')-1,'$'])-col('.'))<CR><C-O>:.retab<CR>
 
