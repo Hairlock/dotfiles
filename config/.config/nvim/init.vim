@@ -113,7 +113,7 @@ xnoremap <leader>p "_dP
 " Buffer navigation shortcuts
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
-nnoremap <c-w> :bd<CR>
+nnoremap <c-w> :bd!<CR>
 
 function! GoBuf()
   bnext
@@ -164,12 +164,6 @@ augroup TerminalStuff
     autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
-" Make sure vim-plug is installed
-if empty(glob("~/.config/nvim/plugged"))
-    silent !curl -fLo ~/.config/nvim/plugged --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall
-    source $MYVIMRC
-endif
 
 function! Haskell_add_language_pragma()
   let line = max([0, search('^{-# LANGUAGE', 'n') - 1])
@@ -182,6 +176,11 @@ endfunction
 
 command! LP :call Haskell_add_language_pragma()
 
+let g:hdevtools_stack = 1
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsInfo<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
+
 " Use * to search in visual mode
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 
@@ -191,14 +190,15 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 
+" Make sure vim-plug is installed
+if empty(glob("~/.config/nvim/plugged"))
+    silent !curl -fLo ~/.config/nvim/plugged --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+    source $MYVIMRC
+endif
 " Load Plugins
 call plug#begin('~/.config/nvim/plugged')
 
-" Dev
-" Plug 'autozimu/LanguageClient-neovim', {
-"   \ 'branch': 'next',
-"   \ 'do': './install.sh'
-"   \ }
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
 Plug 'tpope/vim-commentary'
@@ -217,6 +217,7 @@ Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
+Plug 'bitc/vim-hdevtools'
 
 Plug 'NLKNguyen/papercolor-theme'
 

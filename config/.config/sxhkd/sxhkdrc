@@ -8,9 +8,12 @@ alt + shift + w
       $BROWSER
 
 Print
-      maim screenshot-$(date '+%d%m%y-%H:%M').png
+      maim -s screenshot-$(date '+%d%m%y-%H:%M').png
 
 alt + Print
+      maim screenshot-$(date '+%d%m%y-%H:%M').png
+
+alt + Pause
       record
 
 alt + F1
