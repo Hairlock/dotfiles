@@ -1,0 +1,4 @@
+#!/run/current-system/sw/bin/env sh
+
+
+xclip -selection c -t image/png -i "$0"
