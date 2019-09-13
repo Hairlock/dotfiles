@@ -143,6 +143,7 @@
     (st.overrideAttrs (oldAttrs: { # Terminal with overrides
       src = ./overrides/st;
     }))
+    vscode
 
     nix
     haskellPackages.ghcid

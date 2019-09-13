@@ -200,6 +200,10 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': './install.sh'
+    \ }
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -210,6 +214,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-obsession'
 
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -250,6 +255,13 @@ if exists(":Tabularize")
   nmap <Leader>t> :Tabularize /-><CR>
   vmap <Leader>t> :Tabularize /-><CR>
 endif
+
+" CoC config
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 
 " Fzf Config
 nmap <leader><tab> <plug>(fzf-maps-n)

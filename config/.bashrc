@@ -57,3 +57,5 @@ alias ghci="ghci -ghci-script ~/scripts/.ghci"
 # Misc
 alias sb="source ~/.bashrc"
 alias gs="git status"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
