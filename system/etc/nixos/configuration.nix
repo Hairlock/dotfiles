@@ -73,6 +73,17 @@
   #   consoleKeyMap = "us";
   #   defaultLocale = "en_US.UTF-8";
   # };
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts
+    dina-font
+    proggyfonts
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -152,12 +163,14 @@
     haskell.packages.ghc864.cabal-install
 
     # Utilities
+    xdotool
     light # Brightness setting
     fff # File manager
     sxiv # Image Viewer
     sxhkd # X Daemon for shortcuts
     maim # Screenshot tool
     libnotify
+    git-crypt
 
     # Media
     plex

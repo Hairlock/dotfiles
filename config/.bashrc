@@ -46,6 +46,7 @@ alias h="cd ~"
 alias df="cd ~/.dotfiles"
 alias p="cd ~/Projects"
 alias fp="cd ~/Projects/fp-complete"
+alias sk="cd ~/Repos/sked-v2/api"
 
 # Script execution
 alias gp="gitpush.sh"
