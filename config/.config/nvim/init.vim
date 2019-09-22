@@ -22,6 +22,7 @@ set clipboard+=unnamedplus " Use system clipboard for yanks
 set textwidth=80 " Wrap text at 80 chars
 set updatetime=100
 set backupcopy=yes " For file watchers
+set cmdheight=1
 
 set tabstop=2
 set shiftwidth=2
@@ -115,6 +116,7 @@ nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 nnoremap <c-w> :bd!<CR>
 
+
 function! GoBuf()
   bnext
   echon '    '
@@ -184,6 +186,8 @@ au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
 " Use * to search in visual mode
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 
+nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
+
 " Exit terminal mode naturally
 if has("nvim")
   au TermOpen * tnoremap <Esc> <c-\><c-n>
@@ -200,10 +204,11 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh'
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': './install.sh'
+"     \ }
+" Plug 'jsfaint/gen_tags.vim'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -222,7 +227,7 @@ Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
-Plug 'bitc/vim-hdevtools'
+" Plug 'bitc/vim-hdevtools'
 
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -356,10 +361,10 @@ let g:lightline = {
 " fugitive git bindings
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>gc :Git commit -v -q<CR>
+nnoremap <leader>gt :Git commit -v -q %:p<CR>
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>ge :Gedit :0<CR>
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gw :Gwrite<CR><CR>
 nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>

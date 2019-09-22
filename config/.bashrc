@@ -28,6 +28,7 @@ alias ep="nvim ~/.profile"
 alias ev="nvim ~/.config/nvim/init.vim"
 alias eg="nvim ~/scripts/.ghci"
 alias ex="nvim ~/.config/sxhkd/sxhkdrc"
+alias es="nvim ~/.config/i3status/config"
 alias ei3="nvim ~/.config/i3/config"
 alias xk="xkeywatch"
 
@@ -58,5 +59,7 @@ alias ghci="ghci -ghci-script ~/scripts/.ghci"
 # Misc
 alias sb="source ~/.bashrc"
 alias gs="git status"
+
+eval "$( direnv hook bash )"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

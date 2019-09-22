@@ -19,8 +19,10 @@
   nixpkgs.config.allowUnfree = true;
   environment.variables.EDITOR = "nvim";
 
+  virtualisation.docker.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
+  networking.enableIPv6 = false;
   networking.networkmanager.packages = [ pkgs.networkmanager_openvpn ];
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -68,25 +70,36 @@
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
+  i18n = {
+    consoleFont = "Lat2-Terminus16";
+    consoleKeyMap = "uk";
+    defaultLocale = "en_GB.UTF-8";
+  };
+
   fonts.fonts = with pkgs; [
-    noto-fonts
+    # noto-fonts
     noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts
-    dina-font
-    proggyfonts
+    inconsolata
+    # emojione
+    # noto-fonts-emoji
+    # liberation_ttf
+    # fira-code
+    # fira-code-symbols
+    # mplus-outline-fonts
+    # dina-font
+    # proggyfonts
   ];
 
   # Set your time zone.
   time.timeZone = "Europe/London";
+
+  services.syslogd.enable = true;
+
+  # services.redshift = {
+  #   enable = true;
+  #   latitude = "51.0";
+  #   longitude = "0.0";
+  # };
 
   # Package overrides
   nixpkgs.config.packageOverrides = pkgs: {
@@ -141,9 +154,23 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
+    # Utilities
+    xdotool
+    light # Brightness setting
+    fff # File manager
+    sxiv # Image Viewer
+    sxhkd # X Daemon for shortcuts
+    maim # Screenshot tool
+    libnotify
+    git-crypt
+    gnupg # File encryption
+    docker
+    ripgrep # Keyword search
+    direnv # Automatic env setup
+
     # Dev
     python
-    python36
+    (python37.withPackages(ps: with ps; [ setuptools psutil ]))
     gitAndTools.gitFull
     manpages
     wget sudo
@@ -162,18 +189,9 @@
     haskell.packages.ghc864.ghc
     haskell.packages.ghc864.cabal-install
 
-    # Utilities
-    xdotool
-    light # Brightness setting
-    fff # File manager
-    sxiv # Image Viewer
-    sxhkd # X Daemon for shortcuts
-    maim # Screenshot tool
-    libnotify
-    git-crypt
 
     # Media
-    plex
+    # plex
 
     # Useful
     skypeforlinux
@@ -233,7 +251,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  services.printing.drivers = [ pkgs.hplipWithPlugin pkgs.gutenprint ];
 
 
 
@@ -252,6 +270,7 @@
     windowManager.default = "i3";
     windowManager.i3 = {
       enable = true;
+      # package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
         dmenu
         i3status
@@ -265,7 +284,7 @@
     isNormalUser = true;
     createHome = true;
     group = "users";
-    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
     home = "/home/yannick";
     uid = 1000;
   };
