@@ -157,6 +157,7 @@
     # Utilities
     xdotool
     light # Brightness setting
+    redshift # Color temperature
     fff # File manager
     sxiv # Image Viewer
     sxhkd # X Daemon for shortcuts

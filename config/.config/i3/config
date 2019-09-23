@@ -98,6 +98,12 @@ bindsym $super+Shift+4 move container to workspace 4
 bindsym $super+Shift+5 move container to workspace 5
 bindsym $super+Shift+6 move container to workspace 6
 
+# Redshift
+bindsym Control+Shift+1 exec --no-startup-id redshift -x
+bindsym Control+Shift+2 exec --no-startup-id redshift -O 4000
+bindsym Control+Shift+3 exec --no-startup-id redshift -O 2500
+bindsym Control+Shift+4 exec --no-startup-id redshift -O 2500 -b 0.4
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $super+Shift+r restart
 

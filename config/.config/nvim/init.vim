@@ -207,11 +207,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': './install.sh'
-"     \ }
-" Plug 'jsfaint/gen_tags.vim'
+Plug 'LnL7/vim-nix'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
