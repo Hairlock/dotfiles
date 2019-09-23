@@ -9,6 +9,9 @@ set wildmode=longest,list,full
 set wildignore+=*\\tmp*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set completeopt+=longest
 
+:set number relativenumber
+:set nu rnu
+
 set shell=bash
 set encoding=utf8
 set secure     " No arbitrary commands can run from foreign vimrcs

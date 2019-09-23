@@ -186,8 +186,12 @@
     nix
     haskellPackages.ghcid
     haskellPackages.fast-tags
+    # haskell.packages.ghc801.ghc
+    # haskell.packages.ghc801.cabal-install
     haskell.packages.ghc864.ghc
     haskell.packages.ghc864.cabal-install
+    cabal-install
+    nix-prefetch-git
 
 
     # Media
@@ -236,6 +240,7 @@
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
   # List services that you want to enable:
+  programs.zsh.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -270,7 +275,7 @@
     windowManager.default = "i3";
     windowManager.i3 = {
       enable = true;
-      # package = pkgs.i3-gaps;
+      package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
         dmenu
         i3status

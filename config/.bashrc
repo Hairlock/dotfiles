@@ -46,6 +46,7 @@ alias nrb="sudo nixos-rebuild switch"
 alias h="cd ~"
 alias df="cd ~/.dotfiles"
 alias p="cd ~/Projects"
+alias r="cd ~/Repos"
 alias fp="cd ~/Projects/fp-complete"
 alias sk="cd ~/Repos/sked-v2/api"
 
