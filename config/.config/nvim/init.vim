@@ -368,12 +368,11 @@ nnoremap <leader>ge :Gedit :0<CR>
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gw :Gwrite<CR><CR>
 nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
-nnoremap <leader>gp :Ggrep<leader>
+nnoremap <leader>gph :Gpush<CR>
+nnoremap <leader>gpl :Gpull<CR>
 nnoremap <leader>gm :Gmove<leader>
 nnoremap <leader>gb :Git branch<leader>
 nnoremap <leader>go :Git checkout<leader>
-nnoremap <leader>gps :Dispatch! git push<CR>
-nnoremap <leader>gpl :Dispatch! git pull<CR>
 
 " PaperColor Config
 let g:PaperColor_Theme_Options = {'theme': {'default.dark': { 'transparent_background': 1 } } }
