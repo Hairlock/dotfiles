@@ -219,6 +219,7 @@
     bc # Calculator
     pstree
     neofetch # system info
+    gotop # system usages
 
     # I3
     dunst
