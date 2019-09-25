@@ -229,6 +229,7 @@ Plug 'godlygeek/tabular'
 " Plug 'bitc/vim-hdevtools'
 
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 

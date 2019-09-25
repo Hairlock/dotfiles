@@ -76,18 +76,34 @@
     defaultLocale = "en_GB.UTF-8";
   };
 
+  fonts.enableFontDir = true;
+  fonts.enableGhostscriptFonts = true;
   fonts.fonts = with pkgs; [
-    # noto-fonts
+    corefonts
+    noto-fonts
     noto-fonts-cjk
+    noto-fonts-emoji
     inconsolata
+    font-awesome-ttf
     # emojione
-    # noto-fonts-emoji
-    # liberation_ttf
-    # fira-code
-    # fira-code-symbols
-    # mplus-outline-fonts
-    # dina-font
-    # proggyfonts
+    powerline-fonts
+    freefont_ttf
+    opensans-ttf
+    liberation_ttf
+    liberationsansnarrow
+    ttf_bitstream_vera
+    libertine
+    ubuntu_font_family
+    gentium
+    symbola
+    liberation_ttf
+    fira
+    fira-mono
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts
+    dina-font
+    proggyfonts
   ];
 
   # Set your time zone.
@@ -168,6 +184,7 @@
     docker
     ripgrep # Keyword search
     direnv # Automatic env setup
+    cmake
 
     # Dev
     python
