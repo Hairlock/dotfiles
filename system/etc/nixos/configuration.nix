@@ -204,8 +204,6 @@
     nix
     haskellPackages.ghcid
     haskellPackages.fast-tags
-    # haskell.packages.ghc801.ghc
-    # haskell.packages.ghc801.cabal-install
     haskell.packages.ghc864.ghc
     haskell.packages.ghc864.cabal-install
     cabal-install
@@ -220,6 +218,7 @@
     qbittorrent
     bc # Calculator
     pstree
+    neofetch # system info
 
     # I3
     dunst
