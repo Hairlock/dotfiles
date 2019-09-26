@@ -9,8 +9,9 @@ set wildmode=longest,list,full
 set wildignore+=*\\tmp*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set completeopt+=longest
 
-:set number relativenumber
-:set nu rnu
+set number relativenumber
+set nu rnu
+set showtabline=2
 
 set shell=bash
 set encoding=utf8
@@ -229,6 +230,7 @@ Plug 'godlygeek/tabular'
 " Plug 'bitc/vim-hdevtools'
 
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
@@ -247,7 +249,7 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
 " Regenerate CTAGS
-nnoremap <f5> :!ctags -R<CR>
+nnoremap <f5> :IndentGuidesToggle<CR>
 
 " Tabularize config
 if exists(":Tabularize")
@@ -341,6 +343,9 @@ let g:NERDTreeRespectWildIgnore = 1
 " Lightline Config
 let g:lightline = {
 \   'colorscheme': 'powerline',
+\   'tabline'          : {'left': [['buffers']], 'right': [['close']]},
+\   'component_expand' : {'buffers': 'lightline#bufferline#buffers'},
+\   'component_type'   : {'buffers': 'tabsel'},
 \   'inactive': {
 \       'left': [
 \           [ 'absolutepath' ]
@@ -357,6 +362,11 @@ let g:lightline = {
 \   },
 \   'separator': { 'left': '|', 'right': '|' },
 \}
+
+let g:lightline#bufferline#show_number  = 2
+let g:lightline#bufferline#number_map = {
+\ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+\ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
 
 " fugitive git bindings
 nnoremap <leader>ga :Git add %:p<CR><CR>
