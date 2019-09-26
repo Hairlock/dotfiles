@@ -20,7 +20,7 @@ alt + F1
       shortcuts
 
 alt + F2
-      $TERMINAL -e htop
+      $TERMINAL -e gotop
 
 alt + F3
       displayselect
