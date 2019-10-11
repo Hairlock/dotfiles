@@ -9,9 +9,9 @@ set wildmode=longest,list,full
 set wildignore+=*\\tmp*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set completeopt+=longest
 
-set number relativenumber
-set nu rnu
+set nu
 set showtabline=2
+set autoread
 
 set shell=bash
 set encoding=utf8
@@ -219,6 +219,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-obsession'
 
+Plug 'andys8/vim-elm-syntax'
+
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -232,6 +234,7 @@ Plug 'godlygeek/tabular'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'glacambre/firenvim'
 
 call plug#end()
 
@@ -420,3 +423,36 @@ function! s:align()
     normal! 0f|
   endif
 endfunction
+
+" Highlight character at col 80
+highlight ColorColumn ctermbg=magenta guibg=Magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
+
+function! ApplyOneSuggestion()
+  let l = line(".")
+  let c = col(".")
+  let l:filter = "%! hlint - --refactor  --refactor-options=\"--pos ".l.','.c."\""
+  execute l:filter
+  silent if v:shell_error == 1| undo | endif
+  call cursor(l, c)
+endfunction
+
+
+function! ApplyAllSuggestions()
+  let l = line(".")
+  let c = col(".")
+  let l:filter = "%! hlint - --refactor"
+  execute l:filter
+  silent if v:shell_error == 1| undo | endif"
+  call cursor(l, c)
+endfunction
+
+
+if ( ! exists('g:hlintRefactor#disableDefaultKeybindings') ||
+   \ ! g:hlintRefactor#disableDefaultKeybindings )
+
+  map <silent> to :call ApplyOneSuggestion()<CR>
+  map <silent> ta :call ApplyAllSuggestions()<CR>
+
+endif

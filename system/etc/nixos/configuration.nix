@@ -185,6 +185,7 @@
     ripgrep # Keyword search
     direnv # Automatic env setup
     cmake
+    nodejs-10_x
 
     # Dev
     python
@@ -202,10 +203,12 @@
     vscode
 
     nix
-    haskellPackages.ghcid
-    haskellPackages.fast-tags
-    haskell.packages.ghc864.ghc
-    haskell.packages.ghc864.cabal-install
+    # haskellPackages.ghcid
+    # haskellPackages.fast-tags
+    # haskell.packages.ghc864.ghc
+    # haskell.packages.ghc864.cabal-install
+    # haskell.compiler.ghc7102
+    ghc
     cabal-install
     nix-prefetch-git
 

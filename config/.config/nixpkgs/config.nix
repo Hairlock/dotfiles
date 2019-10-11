@@ -10,6 +10,7 @@ let
 in
 {
   allowUnfree = true;
+  allowBroken = true;
   packageOverrides = pkgs: rec {
 
     vscode = pkgs.vscode.overrideDerivation (old: {
