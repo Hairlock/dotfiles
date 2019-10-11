@@ -1,0 +1,4 @@
+#!/run/current-system/sw/bin/env sh
+todo=$(cat ~/todo.txt)
+
+[ -n "$todo" ] && notify-send "Todo:" "$todo"

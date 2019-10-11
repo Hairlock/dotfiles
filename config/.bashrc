@@ -30,6 +30,7 @@ alias eg="nvim ~/scripts/.ghci"
 alias ex="nvim ~/.config/sxhkd/sxhkdrc"
 alias es="nvim ~/.config/i3status/config"
 alias ei3="nvim ~/.config/i3/config"
+alias et="nvim ~/todo.txt"
 alias xk="xkeywatch"
 
 # System command shortcuts
