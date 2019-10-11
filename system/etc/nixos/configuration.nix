@@ -186,6 +186,7 @@
     direnv # Automatic env setup
     cmake
     nodejs-10_x
+    nixops
 
     # Dev
     python

@@ -34,5 +34,11 @@ alt + F5
 alt + F6
       icons
 
+alt + F8
+      redshift -O 4000
+
+alt + F9
+      redshift -x
+
 alt + F10
       showclip
