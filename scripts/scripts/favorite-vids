@@ -1,0 +1,10 @@
+#!/run/current-system/sw/bin/env sh
+folderpath="/home/yannick/Videos/favorites/"
+options="$(printf "%s\\${1}" | xargs ls $folderpath )"
+chosen="$(echo "$options" | dmenu -i -p "Which video?")" 
+
+if [ -z "$chosen" ]; then
+	exit 0
+else
+	vlc "${folderpath}${chosen}"
+fi

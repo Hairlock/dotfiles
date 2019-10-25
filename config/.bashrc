@@ -14,7 +14,6 @@ export FFF_FAV2=~/.dotfiles
 export PROMPT_COMMAND="pwd > /tmp/whereami"
 
 # Program shortcuts
-alias v="nvim"
 alias vim="nvim"
 alias fm="fff"
 alias img="sxiv -t ."
@@ -50,6 +49,7 @@ alias p="cd ~/Projects"
 alias r="cd ~/Repos"
 alias fp="cd ~/Projects/fp-complete"
 alias sk="cd ~/Repos/sked-v2/api"
+alias v="cd ~/Videos"
 
 # Script execution
 alias gp="gitpush.sh"
