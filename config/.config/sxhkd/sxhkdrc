@@ -20,7 +20,7 @@ alt + F1
       shortcuts
 
 alt + F2
-      $TERMINAL -e gotop
+      bluetooth
 
 alt + F3
       displayselect

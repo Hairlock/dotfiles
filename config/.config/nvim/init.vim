@@ -12,6 +12,7 @@ set completeopt+=longest
 set nu
 set showtabline=2
 set autoread
+set lazyredraw
 
 set shell=bash
 set encoding=utf8
@@ -120,7 +121,26 @@ nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 nnoremap <c-w> :bd!<CR>
 
+" View set marks
+nnoremap <F1> :<C-u>marks<CR>:normal! `
+function! Marks()
+    marks
+    echo('Mark: ')
 
+    " getchar() - prompts user for a single character and returns the chars
+    " ascii representation
+    " nr2char() - converts ASCII `NUMBER TO CHAR'
+
+    let s:mark = nr2char(getchar())
+    " remove the `press any key prompt'
+    redraw
+
+    " build a string which uses the `normal' command plus the var holding the
+    " mark - then eval it.
+    execute "normal! '" . s:mark
+endfunction
+
+nnoremap ' :call Marks()<CR>
 function! GoBuf()
   bnext
   echon '    '
@@ -181,11 +201,6 @@ function! Haskell_add_language_pragma()
 endfunction
 
 command! LP :call Haskell_add_language_pragma()
-
-let g:hdevtools_stack = 1
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsInfo<CR>
-au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
 
 " Use * to search in visual mode
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -399,6 +414,8 @@ nnoremap <leader>gpl :Gpull<CR>
 nnoremap <leader>gm :Gmove<leader>
 nnoremap <leader>gb :Git branch<leader>
 nnoremap <leader>go :Git checkout<leader>
+
+vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
 
 " PaperColor Config
 let g:PaperColor_Theme_Options = {'theme': {'default.dark': { 'transparent_background': 1 } } }

@@ -1,0 +1,25 @@
+#!/run/current-system/sw/bin/env sh
+
+anker() {
+	coproc bluetoothctl
+	echo -e 'power on' >&${COPROC[1]}
+	echo -e 'agent on' >&${COPROC[1]}
+	echo -e 'default-agent' >&${COPROC[1]}
+	sleep 3
+	echo -e 'connect A0:E9:DB:08:15:D7\nexit' >&${COPROC[1]}
+	output=$(cat <&${COPROC[0]})
+	echo $output
+}
+
+off() {
+	coproc bluetoothctl
+	echo -e 'power off' >&${COPROC[1]}
+	exec {COPROC[1]}>&-
+	output=$(cat <&${COPROC[0]})
+}
+
+option=$(printf "%s\\nanker\\noff" | dmenu -i -p "Bluetooth commands:") && 
+	case "$option" in
+		"anker") anker ;;
+		"off") off ;;
+	esac
