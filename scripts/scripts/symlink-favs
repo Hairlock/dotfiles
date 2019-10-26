@@ -1,6 +1,5 @@
 #!/run/current-system/sw/bin/env sh
-base_folder_path="/home/yannick/Videos"
-fav_vids="${base_folder_path}/favorites"
+fav_vids="/home/yannick/Videos/favorites"
 
 mkdir -p $fav_vids
 rm -f ${fav_vids}/*
