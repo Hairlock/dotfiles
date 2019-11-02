@@ -187,6 +187,7 @@
     cmake
     nodejs-10_x
     nixops
+    bat # Formatted cat
 
     # Dev
     python

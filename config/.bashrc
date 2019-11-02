@@ -17,6 +17,7 @@ export PROMPT_COMMAND="pwd > /tmp/whereami"
 alias vim="nvim"
 alias fm="fff"
 alias img="sxiv -t ."
+alias cat="bat"
 
 # Edit config files
 alias ss="maim -s | xclip -selection clipboard -t image/png"
