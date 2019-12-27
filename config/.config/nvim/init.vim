@@ -27,7 +27,7 @@ set clipboard+=unnamedplus " Use system clipboard for yanks
 set textwidth=80 " Wrap text at 80 chars
 set updatetime=100
 set backupcopy=yes " For file watchers
-set cmdheight=1
+set cmdheight=2
 
 set tabstop=2
 set shiftwidth=2
@@ -66,6 +66,10 @@ set whichwrap+=<,>,h,l
 set mouse=a
 
 set diffopt=filler,vertical
+
+" Local spaces by filetype
+autocmd Filetype nix setlocal ts=2 sw=2 expandtab
+
 
 " Set Leader keys
 let mapleader = ','
@@ -190,6 +194,13 @@ augroup TerminalStuff
     autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
+" Fzf Hoogle
+augroup HoogleMaps
+  autocmd!
+  autocmd FileType haskell nnoremap <buffer> <leader>hh :Hoogle <c-r>=expand("<cword>")<CR><CR>
+augroup END
+"let g:hoogle_path = /"/home/yannick/.nix-profile/bin/hoogle"
+
 
 function! Haskell_add_language_pragma()
   let line = max([0, search('^{-# LANGUAGE', 'n') - 1])
@@ -239,17 +250,20 @@ Plug 'andys8/vim-elm-syntax'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'monkoose/fzf-hoogle.vim'
+Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Plug 'bitc/vim-hdevtools'
 
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'glacambre/firenvim'
 
 call plug#end()
 
@@ -351,7 +365,7 @@ map  <c-n>     :NERDTreeToggle<cr>
 nmap <leader>n :NERDTreeFind<cr>
 
 let g:NERDTreeWinPos = 'left'
-let g:NERDTreeShowHidden = 1
+let g:NERDTreeShowHidden = 0
 let g:NERDTreeWinSize = 35
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -412,7 +426,7 @@ nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
 nnoremap <leader>gph :Gpush<CR>
 nnoremap <leader>gpl :Gpull<CR>
 nnoremap <leader>gm :Gmove<leader>
-nnoremap <leader>gb :Git branch<leader>
+nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>go :Git checkout<leader>
 
 vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ

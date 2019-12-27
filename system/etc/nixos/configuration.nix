@@ -2,7 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }:
-
+let
+  unstableTarball =
+      fetchTarball
+        https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -20,6 +24,7 @@
   environment.variables.EDITOR = "nvim";
 
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.enableIPv6 = false;
@@ -122,6 +127,9 @@
     st = (pkgs.st.overrideAttrs (oldAttrs: {
       src = ./overrides/st;
     }));
+    unstable = import unstableTarball {
+      config = config.nixpkgs.config;
+    };
   };
 
   # SystemD services
@@ -188,6 +196,7 @@
     nodejs-10_x
     nixops
     bat # Formatted cat
+    jq # Processing Json
 
     # Dev
     python
@@ -209,7 +218,7 @@
     # haskellPackages.fast-tags
     # haskell.packages.ghc864.ghc
     # haskell.packages.ghc864.cabal-install
-    # haskell.compiler.ghc7102
+     haskell.compiler.ghc7102
     ghc
     cabal-install
     nix-prefetch-git
@@ -219,7 +228,7 @@
     # plex
 
     # Useful
-    skypeforlinux
+    # skypeforlinux
     qbittorrent
     bc # Calculator
     pstree
@@ -252,7 +261,8 @@
     networkmanagerapplet
 
     nix-prefetch-scripts
-    neovim
+    unstable.neovim
+    unstable.slack
     wget
     which
   ]);
@@ -316,6 +326,7 @@
     home = "/home/yannick";
     uid = 1000;
   };
+  users.extraGroups.vboxusers.members = [ "yannick" ];
 
   nix.trustedUsers = [ "root" "yannick" ];
 

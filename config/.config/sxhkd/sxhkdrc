@@ -34,6 +34,9 @@ alt + F5
 alt + F6
       icons
 
+alt + F7
+      fullscreen
+
 alt + F8
       redshift -O 4000
 
@@ -42,3 +45,6 @@ alt + F9
 
 alt + F10
       showclip
+
+alt + F11
+      displayselect

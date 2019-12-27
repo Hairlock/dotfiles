@@ -18,6 +18,7 @@ alias vim="nvim"
 alias fm="fff"
 alias img="sxiv -t ."
 alias cat="bat"
+alias ns="nix-store"
 
 # Edit config files
 alias ss="maim -s | xclip -selection clipboard -t image/png"
@@ -51,6 +52,8 @@ alias r="cd ~/Repos"
 alias fp="cd ~/Projects/fp-complete"
 alias sk="cd ~/Repos/sked-v2/api"
 alias v="cd ~/Videos"
+alias m="cd ~/Videos/Movies"
+alias f="cd ~/Documents/French"
 
 # Script execution
 alias gp="gitpush.sh"

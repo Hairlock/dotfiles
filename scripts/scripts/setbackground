@@ -1,0 +1,4 @@
+#!/run/current-system/sw/bin/env sh
+
+hsetroot -center $1
+
