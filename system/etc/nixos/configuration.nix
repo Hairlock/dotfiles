@@ -15,13 +15,16 @@ in
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
- # boot.loader.grub = {
- #    enable = true;
- #    version = 2;
- #    useOSProber = true;
- #    devices = [ "/dev/sda" ];
- # };
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.grub = {
+     enable = true;
+     version = 2;
+     efiSupport = true;
+     enableCryptodisk = true;
+     useOSProber = true;
+     device = "nodev";
+   };
 
   nix.gc.automatic = true;
   nix.gc.dates = "22:00";
@@ -130,9 +133,9 @@ in
 
   # Package overrides
   nixpkgs.config.packageOverrides = pkgs: {
-    #st = (pkgs.st.overrideAttrs (oldAttrs: {
-    #  src = ./overrides/st;
-    #}));
+    st = (pkgs.st.overrideAttrs (oldAttrs: {
+      src = ./overrides/st;
+    }));
     unstable = import unstableTarball {
       config = config.nixpkgs.config;
     };
@@ -203,7 +206,6 @@ in
     nixops
     bat # Formatted cat
     jq # Processing Json
-    stow # Dotfile Management
 
     # Dev
     python
@@ -215,9 +217,9 @@ in
     gnumake
     gcc
     zlib
-    #(st.overrideAttrs (oldAttrs: { # Terminal with overrides
-    #  src = ./overrides/st;
-    #}))
+    (st.overrideAttrs (oldAttrs: { # Terminal with overrides
+      src = ./overrides/st;
+    }))
     vscode
 
     nix

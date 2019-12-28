@@ -224,12 +224,6 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 
-" Make sure vim-plug is installed
-if empty(glob("~/.config/nvim/plugged"))
-    silent !curl -fLo ~/.config/nvim/plugged --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall
-    source $MYVIMRC
-endif
 " Load Plugins
 call plug#begin('~/.config/nvim/plugged')
 
