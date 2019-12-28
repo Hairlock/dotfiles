@@ -15,7 +15,13 @@ in
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = false;
+ # boot.loader.grub = {
+ #    enable = true;
+ #    version = 2;
+ #    useOSProber = true;
+ #    devices = [ "/dev/sda" ];
+ # };
 
   nix.gc.automatic = true;
   nix.gc.dates = "22:00";
@@ -34,7 +40,7 @@ in
   boot.initrd.luks.devices = [
    {
     name = "root";
-    device = "/dev/sda2";
+    device = "/dev/sdb2";
     preLVM = true;
    }
   ];
@@ -124,9 +130,9 @@ in
 
   # Package overrides
   nixpkgs.config.packageOverrides = pkgs: {
-    st = (pkgs.st.overrideAttrs (oldAttrs: {
-      src = ./overrides/st;
-    }));
+    #st = (pkgs.st.overrideAttrs (oldAttrs: {
+    #  src = ./overrides/st;
+    #}));
     unstable = import unstableTarball {
       config = config.nixpkgs.config;
     };
@@ -197,6 +203,7 @@ in
     nixops
     bat # Formatted cat
     jq # Processing Json
+    stow # Dotfile Management
 
     # Dev
     python
@@ -208,9 +215,9 @@ in
     gnumake
     gcc
     zlib
-    (st.overrideAttrs (oldAttrs: { # Terminal with overrides
-      src = ./overrides/st;
-    }))
+    #(st.overrideAttrs (oldAttrs: { # Terminal with overrides
+    #  src = ./overrides/st;
+    #}))
     vscode
 
     nix
@@ -218,7 +225,7 @@ in
     # haskellPackages.fast-tags
     # haskell.packages.ghc864.ghc
     # haskell.packages.ghc864.cabal-install
-     haskell.compiler.ghc7102
+    # haskell.compiler.ghc7102
     ghc
     cabal-install
     nix-prefetch-git
@@ -262,7 +269,7 @@ in
 
     nix-prefetch-scripts
     unstable.neovim
-    unstable.slack
+    # unstable.slack
     wget
     which
   ]);
@@ -334,6 +341,6 @@ in
   # compatible in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.03"; # Did you read the comment?
+  system.stateVersion = "19.09"; # Did you read the comment?
 
 }
