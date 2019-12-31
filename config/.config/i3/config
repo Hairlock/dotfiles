@@ -2,7 +2,6 @@ for_window [class="^.*"] border pixel 2
 gaps inner 10
 gaps outer 0
 
-
 # set modifier
 set $super Mod1
 set $alt Mod4
