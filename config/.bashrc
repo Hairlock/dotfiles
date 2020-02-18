@@ -4,7 +4,7 @@ export TERMINAL=st
 export BROWSER=chromium
 export MYVIMRC="/home/yannick/.config/nvim/init.vim"
 export PATH=/home/yannick/scripts:/home/yannick/.local/bin:$PATH
-export FZF_DEFAULT_COMMAND='find *'
+export FZF_DEFAULT_COMMAND='ag -l'
 
 # FFF variable config
 export FFF_HIDDEN=0
@@ -26,7 +26,7 @@ alias sn="sudo nvim"
 alias ec="sn /etc/nixos/configuration.nix"
 alias eb="nvim ~/.bashrc"
 alias ep="nvim ~/.profile"
-alias ev="nvim ~/.config/nvim/init.vim"
+alias ev="nvim ~/.dotfiles/config/.config/nvim/init.vim"
 alias eg="nvim ~/scripts/.ghci"
 alias ex="nvim ~/.config/sxhkd/sxhkdrc"
 alias es="nvim ~/.config/i3status/config"

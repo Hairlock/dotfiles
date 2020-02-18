@@ -39,6 +39,7 @@
 *.color7  : #e5e9f0
 *.color15 : #d1d5dc
 st.alpha: 0.7
+st.font: Hasklig-13;
 
 ! ------------------------------------------------------------------------------
 ! Font configuration

@@ -4,5 +4,6 @@
 
 WHEREAMI=$(cat /tmp/whereami)
 cd $WHEREAMI
-i3-sensible-terminal 
+# i3-sensible-terminal 
+st #-f 'Hasklig:size=23'
 

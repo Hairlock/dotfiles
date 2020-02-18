@@ -123,6 +123,8 @@ xnoremap <leader>p "_dP
 " Buffer navigation shortcuts
 nnoremap <C-]> :bn<CR>
 nnoremap <C-[> :bp<CR>
+" nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+" nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR> nnoremap <C-[> :bp<CR>
 nnoremap <S-w> :bd!<CR>
 
 " View set marks
@@ -163,7 +165,7 @@ map <F8> :call GoBuf()<CR>
 
 map <leader>q :q!<CR>
 map <leader>w :w!<CR>
-map <leader>e :wq!<CR>
+" map \w :w!<CR>
 map <leader>s :source /home/yannick/.config/nvim/init.vim<CR>
 nnoremap th <C-w>h
 nnoremap tj <C-w>j
@@ -182,6 +184,16 @@ vmap <down>  ]egv
 vmap <left>  <gv
 vmap <right> >gv
 
+" Macros
+let @y = '"_ciwPjk' " change current word and paste from default buffer
+let @q = '0wwyiwf:"_c$= fieldNamed "p"jkj' "Use Data Constructor field to make Beam Datatype line
+let @e = '0kyiwjPa' " Copy first word of above line and paste under cursor
+" let @t = 'mm?::byiw`m0Pa'
+let @t= 'mm?::byiw`m0PjkA jka'
+nnoremap <leader>c @t
+nnoremap <leader>v @y
+
+" Terminal
 " :T creates a new terminal split (VT for a vertical split)
 command! -nargs=* T  below split | terminal <args>
 command! -nargs=* VT below vsplit | terminal <args>
@@ -230,6 +242,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'LnL7/vim-nix'
 
+" Plug 'vimwiki/vimwiki'
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -245,7 +259,7 @@ Plug 'andys8/vim-elm-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'monkoose/fzf-hoogle.vim'
-Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
+Plug 'glacambre/firenvim'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
@@ -258,8 +272,14 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
+
+" Haskell vim settings
+let g:haskell_classic_highlighting=1
+let g:haskell_indent_disable=1
 
 " Remaps
 " Disable hlsearch on ctrl-l
@@ -313,6 +333,8 @@ map <c-p> :Files<cr>
 " Session management config
 nnoremap <c-s> :Obsession <CR>
 
+" Vimwiki config
+let g:vimwiki_folding = 'list'
 
 " Ale Config
 let g:ale_linters = {
@@ -410,7 +432,7 @@ nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 " fugitive git bindings
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Git commit -v -q<CR>
+nnoremap <leader>gc :Git commit -q<CR>
 nnoremap <leader>gt :Git commit -v -q %:p<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>ge :Gedit :0<CR>
@@ -427,8 +449,11 @@ vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
 
 " PaperColor Config
 let g:PaperColor_Theme_Options = {'theme': {'default.dark': { 'transparent_background': 1 } } }
+set t_Co=256
+" set background=light
+" set laststatus=2
 colorscheme PaperColor
-set background=dark
+" hi Normal guibg=NONE ctermbg=NONE
 
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()

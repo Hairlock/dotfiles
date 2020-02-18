@@ -7,7 +7,8 @@ set $super Mod1
 set $alt Mod4
 
 # set font
-font pango: Noto Sans 13
+font pango: Hasklig 13
+# font pango: Noto Sans 13
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
@@ -17,11 +18,11 @@ floating_modifier $super
 exec --no-startup-id hsetroot -center ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
-exec st sh -c 'neofetch; bash'
+exec st sh -c 'neofetch; bash' -f 'Hasklig:size=13'
 exec chromium
 
 # start a terminal
-bindsym $alt+Return exec st
+bindsym $alt+Return exec st -f 'Hasklig:size=13'
 
 # start dmenu (a program launcher)
 bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
@@ -92,6 +93,9 @@ bindsym $super+7 workspace 7
 bindsym $super+8 workspace 8
 bindsym $super+9 workspace 9
 bindsym $super+0 workspace 10
+
+# Move workspace to monitor
+bindsym $super+m move workspace to output left
 
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace 1
